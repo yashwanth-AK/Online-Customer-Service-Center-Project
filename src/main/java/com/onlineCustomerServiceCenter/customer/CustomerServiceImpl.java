@@ -12,8 +12,22 @@ public class CustomerServiceImpl implements CustomerService{
     @Autowired
     private CustomerRepository customerRepository;
     @Override
-    public Customer registerCustomer(Customer newCustomer) {
+    public Customer registerCustomer(Customer newCustomer) throws CustomerExceptions{
+        Optional<Customer> accountOpt = this.customerRepository.findByEmail(newCustomer.getEmail());
+        if(accountOpt.isPresent())
+            throw new CustomerExceptions("Email already registered, please re try."+newCustomer.getEmail());
         return this.customerRepository.save(newCustomer);
+    }
+    public Customer customerLogin(String customerEmail,String customerPassword) throws CustomerExceptions{
+        Optional<Customer> customerOpt = this.customerRepository.findByEmail(customerEmail);
+        if(customerOpt.isEmpty())
+         throw new CustomerExceptions("Customer does not exists for :"+customerEmail);
+
+        Customer foundCustomer = customerOpt.get();
+       if(!foundCustomer.getPassword().equals(customerPassword))
+            throw new CustomerExceptions("Password does not match");
+
+        return foundCustomer;
     }
     public Customer updateCustomer(Customer customer){
         return this.customerRepository.save(customer);
@@ -24,14 +38,12 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer getCustomerById(Integer customerId){
         return this.customerRepository.findById(customerId).get();
     }
-    // public Customer getCustomerByName(String customerName){
-    //     return this.customerRepository.findByNameContaining(customerName);
-    //}
-    public Customer deleteCustomerById(Integer customerId)
-    {
-        Optional<Customer> accountOpt = this.customerRepository.findById(customerId);
+    public Customer deleteCustomerById(Integer customerId) throws CustomerExceptions{
+        Optional<Customer> customerOpt = this.customerRepository.findById(customerId);
+        if(customerOpt.isEmpty())
+            throw new CustomerExceptions("Customer does not exists for :"+ customerId);
         this.customerRepository.deleteById(customerId);
-        return accountOpt.get();
+        return customerOpt.get();
     }
 
 }
