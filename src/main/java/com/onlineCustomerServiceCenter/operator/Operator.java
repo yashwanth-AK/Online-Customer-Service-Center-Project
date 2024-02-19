@@ -19,13 +19,6 @@ public class Operator {
     @GeneratedValue()
     private Integer operatorId;
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
 
     @NotNull(message = "First Name cannot be null")
     @NotBlank(message = "First Name cannot be blank")
@@ -129,5 +122,12 @@ public class Operator {
 
     public void setCustomerIssues(List<Issue> customerIssues) {
         this.customerIssues = customerIssues;
+    }
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
