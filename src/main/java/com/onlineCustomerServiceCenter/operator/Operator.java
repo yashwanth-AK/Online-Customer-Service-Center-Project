@@ -19,6 +19,14 @@ public class Operator {
     @GeneratedValue()
     private Integer operatorId;
 
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
     @NotNull(message = "First Name cannot be null")
     @NotBlank(message = "First Name cannot be blank")
     private String firstName;
