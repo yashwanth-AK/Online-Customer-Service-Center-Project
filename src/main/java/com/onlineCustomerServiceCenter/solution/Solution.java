@@ -1,6 +1,7 @@
-package com.onlineCustomerServiceCenter.operator;
+package com.onlineCustomerServiceCenter.solution;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -11,6 +12,7 @@ public class Solution {
     @GeneratedValue()
     private Integer solutionId;
     private String solutionDescription;
+    @Column (columnDefinition = "boolean default false")
     private Boolean isSolutionAccepted;
     private Integer operatorId;
 
