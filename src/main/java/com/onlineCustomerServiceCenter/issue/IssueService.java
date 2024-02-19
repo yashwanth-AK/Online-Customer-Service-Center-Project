@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public interface IssueService {
+
     public Issue addIssue(Issue issue) throws NullIssueException;
     public Issue updateIssueDescById(Issue issue, String newDesc) throws NullIssueException;
 
@@ -15,4 +16,5 @@ public interface IssueService {
     public List<Issue> getAllIssues();
 
     public List<Issue> getAllIssuesByType(String type);
+
 }

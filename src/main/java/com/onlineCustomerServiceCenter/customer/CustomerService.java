@@ -1,6 +1,14 @@
 package com.onlineCustomerServiceCenter.customer;
 
-import com.onlineCustomerServiceCenter.customer.Customer;
+import java.util.List;
+
 public interface CustomerService {
-    Customer registerCustomer(Customer newCustomer);
+    Customer registerCustomer(Customer newCustomer) throws CustomerRegisterException;
+    Customer customerLogin(String customerEmail,String customerPassword) throws CustomerLoginException;
+    Customer updateCustomer(Customer customer) throws CustomerUpdateException;
+    List<Customer> getAllCustomers();
+    Customer getCustomerById(Integer customerId);
+    // Customer getCustomerByName(String customerName);
+    Customer deleteCustomerById(Integer customerId) throws CustomerDeleteException ;
+
 }
