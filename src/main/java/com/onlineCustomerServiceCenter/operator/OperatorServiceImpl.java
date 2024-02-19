@@ -1,5 +1,9 @@
 package com.onlineCustomerServiceCenter.operator;
 
+import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.issue.IssueRepository;
+import com.onlineCustomerServiceCenter.solution.Solution;
+import com.onlineCustomerServiceCenter.solution.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +14,10 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Autowired
     private OperatorRespository operatorRespository;
+    @Autowired
+    private IssueRepository issueRepository;
+    @Autowired
+    private SolutionService solutionService;
 
 
     @Override
@@ -28,8 +36,21 @@ public class OperatorServiceImpl implements OperatorService {
         }
     }
 
+
+
     @Override
     public Operator updateOperatorProfile(Operator updatedoperator) {
         return this.operatorRespository.save(updatedoperator);
+    }
+    @Override
+    public Issue addIssueSolution(String issueId, String solutionDescription) {
+      Optional<Issue> issueOptional=  this.issueRepository.findById(Integer.parseInt(issueId));
+      if(issueOptional.isPresent()){
+          Issue issue=issueOptional.get();
+//        Solution solution= solutionService.createSolution(solutionDescription);
+//          this.
+//          issue.getSolutions().add();
+      }
+        return null;
     }
 }
