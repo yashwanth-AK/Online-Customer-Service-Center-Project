@@ -3,12 +3,12 @@ package com.onlineCustomerServiceCenter.customer;
 import java.util.List;
 
 public interface CustomerService {
-    Customer registerCustomer(Customer newCustomer) throws CustomerExceptions;
-    Customer customerLogin(String customerEmail,String customerPassword) throws CustomerExceptions;
-    Customer updateCustomer(Customer customer);
+    Customer registerCustomer(Customer newCustomer) throws CustomerRegisterException;
+    Customer customerLogin(String customerEmail,String customerPassword) throws CustomerLoginException;
+    Customer updateCustomer(Customer customer) throws CustomerUpdateException;
     List<Customer> getAllCustomers();
     Customer getCustomerById(Integer customerId);
     // Customer getCustomerByName(String customerName);
-    Customer deleteCustomerById(Integer customerId) throws CustomerExceptions ;
+    Customer deleteCustomerById(Integer customerId) throws CustomerDeleteException ;
 
 }

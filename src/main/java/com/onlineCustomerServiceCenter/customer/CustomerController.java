@@ -10,15 +10,15 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("customer")
-    public Customer registerCustomer(@RequestBody Customer newCustomer) throws CustomerExceptions{
+    public Customer registerCustomer(@RequestBody Customer newCustomer) throws CustomerRegisterException{
         return this.customerService.registerCustomer(newCustomer);
     }
     @PostMapping("login/customer")
-	public Customer userAccountLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerExceptions{
+	public Customer userAccountLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException{
 		return this.customerService.customerLogin(loginDto.getUserEmail(), loginDto.getCustomerPassword());
 	}
     @PutMapping("update/customer")
-    public Customer updateCustomerProfile(@RequestBody Customer customer){
+    public Customer updateCustomerProfile(@RequestBody Customer customer) throws CustomerUpdateException{
         return this.customerService.updateCustomer(customer);
     }
     @GetMapping("customers")
@@ -30,7 +30,7 @@ public class CustomerController {
         return this.customerService.getCustomerById(id);
     }
     @DeleteMapping("customer/{id}")
-    public Customer deleteCustomerById(@PathVariable("id") Integer id) throws CustomerExceptions{
+    public Customer deleteCustomerById(@PathVariable("id") Integer id) throws CustomerDeleteException{
         return this.customerService.deleteCustomerById(id);
     }
 
