@@ -6,6 +6,7 @@ import com.onlineCustomerServiceCenter.issue.IssueServiceImpl;
 import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
 import com.onlineCustomerServiceCenter.issue.exception.NullIssueException;
 import com.onlineCustomerServiceCenter.solution.Solution;
+import com.onlineCustomerServiceCenter.solution.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,7 +17,8 @@ public class CustomerController {
     private CustomerService customerService;
     @Autowired
     private IssueService issueService;
-
+    @Autowired
+    private SolutionService solutionService;
 
 
     @PostMapping("customer")
@@ -48,10 +50,11 @@ public class CustomerController {
     public Customer deleteCustomerById(@PathVariable("id") Integer id) throws CustomerDeleteException {
         return this.customerService.deleteCustomerById(id);
     }
-//    @PatchMapping("customer")
-//    public Customer acceptSolution(@RequestBody Solution solution) {
-//
-//    }
+//   @PatchMapping("customer")
+ //public Customer acceptSolution() {
+    //return this.solutionService.acceptSolution();
+
+   //}
 
     @PostMapping("issue/create")
     public Issue createIssue(@RequestBody Issue newIssue) throws NullIssueException {
