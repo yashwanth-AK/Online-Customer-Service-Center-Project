@@ -2,6 +2,7 @@ package com.onlineCustomerServiceCenter.issue;
 
 import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
 import com.onlineCustomerServiceCenter.issue.exception.NullIssueException;
+import com.onlineCustomerServiceCenter.operator.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface IssueService {
     public List<Issue> getAllIssues();
 
     public List<Issue> getAllIssuesByType(String type);
+
+    public String addSolutionToIssueById(Integer issueId, List<Solution> solutions) throws IssueNotFoundException;
 }
