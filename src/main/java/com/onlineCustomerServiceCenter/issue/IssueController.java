@@ -11,6 +11,4 @@ import org.springframework.web.bind.annotation.RestController;
 public class IssueController {
     //No endpoints for Issue module. It is to be linked with other modules
 
-=======
-public class IssueController{
 }

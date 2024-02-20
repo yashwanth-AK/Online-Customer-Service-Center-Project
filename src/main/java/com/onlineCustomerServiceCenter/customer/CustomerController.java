@@ -9,15 +9,15 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping("customer")
+    @PostMapping("customer/register")
     public Customer registerCustomer(@RequestBody Customer newCustomer) throws CustomerRegisterException{
         return this.customerService.registerCustomer(newCustomer);
     }
-    @PostMapping("login/customer")
+    @PostMapping("customer/login")
 	public Customer userAccountLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException{
 		return this.customerService.customerLogin(loginDto.getUserEmail(), loginDto.getCustomerPassword());
 	}
-    @PutMapping("update/customer")
+    @PutMapping("customer/update")
     public Customer updateCustomerProfile(@RequestBody Customer customer) throws CustomerUpdateException{
         return this.customerService.updateCustomer(customer);
     }
