@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Issue {
 
     private String issueStatus;
 
+    @Size(min = 10, max = 50, message = "The Issue Description must be between 10 and 50 characters")
     private String issueDescription;
 
     @OneToMany
@@ -95,5 +97,18 @@ public class Issue {
 
     public void setSolutions(List<Solution> solutions) {
         this.solutions = solutions;
+    }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "issueId=" + issueId +
+                ", issueType='" + issueType + '\'' +
+                ", IssueCreationDate=" + IssueCreationDate +
+                ", IssueUpdatedDate=" + IssueUpdatedDate +
+                ", issueStatus='" + issueStatus + '\'' +
+                ", issueDescription='" + issueDescription + '\'' +
+                ", solutions=" + solutions +
+                '}';
     }
 }
