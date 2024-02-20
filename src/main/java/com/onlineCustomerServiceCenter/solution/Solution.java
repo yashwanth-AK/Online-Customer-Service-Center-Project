@@ -26,6 +26,10 @@ public class Solution {
     public Solution() {
     }
 
+    public Solution(String solutionDescription) {
+        this.solutionDescription = solutionDescription;
+    }
+
     public Integer getSolutionId() {
         return solutionId;
     }
