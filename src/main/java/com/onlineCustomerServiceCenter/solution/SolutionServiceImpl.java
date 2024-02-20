@@ -9,9 +9,10 @@ public class SolutionServiceImpl implements SolutionService{
     @Autowired
     private  SolutionRepository solutionRepository;
 
-    @Override
-    public Solution createSolution(Solution newsolution) {
-        return this.solutionRepository.save(newsolution);
-    }
 
+    @Override
+    public Solution createSolution(String solutionDescription) {
+        Solution solution=new Solution(solutionDescription);
+        return this.solutionRepository.save(solution);
+    }
 }
