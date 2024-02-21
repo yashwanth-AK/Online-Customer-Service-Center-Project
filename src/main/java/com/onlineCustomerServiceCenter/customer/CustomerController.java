@@ -21,18 +21,17 @@ public class CustomerController {
     private SolutionService solutionService;
 
 
-    @PostMapping("customer")
-    public Customer registerCustomer(@RequestBody Customer newCustomer) throws CustomerRegisterException {
+
+    @PostMapping("customer/register")
+    public Customer registerCustomer(@RequestBody Customer newCustomer) throws CustomerRegisterException{
         return this.customerService.registerCustomer(newCustomer);
     }
-
-    @PostMapping("login/customer")
-    public Customer customerLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException {
-        return this.customerService.customerLogin(loginDto.getCustomerEmail(), loginDto.getCustomerPassword());
-    }
-
-    @PutMapping("update/customer")
-    public Customer updateCustomerProfile(@RequestBody Customer customer) throws CustomerUpdateException {
+    @PostMapping("customer/login")
+	public Customer userAccountLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException{
+		return this.customerService.customerLogin(loginDto.getUserEmail(), loginDto.getCustomerPassword());
+	}
+    @PutMapping("customer/update")
+    public Customer updateCustomerProfile(@RequestBody Customer customer) throws CustomerUpdateException{
         return this.customerService.updateCustomer(customer);
     }
 

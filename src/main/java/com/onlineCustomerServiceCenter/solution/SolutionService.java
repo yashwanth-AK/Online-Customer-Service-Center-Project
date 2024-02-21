@@ -2,9 +2,7 @@ package com.onlineCustomerServiceCenter.solution;
 
 public interface SolutionService {
 
-   Solution createSolution(Solution newsolution);
-
-   Solution createSolution(String solutionDescription);
-   Solution acceptSolution(String  solutionId);
-
+   Solution createSolution(String solutionDescription) throws SolutionException;
+   Solution acceptSolution(String  solutionId) throws SolutionException;
 }
+
