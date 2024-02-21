@@ -1,9 +1,10 @@
-package com.onlineCustomerServiceCenter.operator;
+package com.onlineCustomerServiceCenter.operator.controller;
 
-import com.onlineCustomerServiceCenter.customer.Customer;
 import com.onlineCustomerServiceCenter.issue.Issue;
-import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
-import com.onlineCustomerServiceCenter.solution.SolutionException;
+import com.onlineCustomerServiceCenter.operator.entity.Operator;
+import com.onlineCustomerServiceCenter.operator.dto.OperatorLoginDto;
+import com.onlineCustomerServiceCenter.operator.service.OperatorService;
+import com.onlineCustomerServiceCenter.operator.dto.IssueSolutionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,13 +22,7 @@ public class OperatorController {
     }
     @PostMapping("operator/solution")
     public Issue addIssueSolution(@RequestBody IssueSolutionDto issueSolutionDto){
-        try {
-            return this.operatorService.addIssueSolution(issueSolutionDto.getIssueId(),issueSolutionDto.getSolutionDescription());
-        } catch (SolutionException e) {
-            throw new RuntimeException(e);
-        } catch (IssueNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        return this.operatorService.addIssueSolution(issueSolutionDto.getIssueId(),issueSolutionDto.getSolutionDescription());
     }
 
 }

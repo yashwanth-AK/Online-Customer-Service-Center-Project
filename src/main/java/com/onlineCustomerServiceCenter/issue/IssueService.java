@@ -2,8 +2,7 @@ package com.onlineCustomerServiceCenter.issue;
 
 import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
 import com.onlineCustomerServiceCenter.issue.exception.NullIssueException;
-import com.onlineCustomerServiceCenter.solution.Solution;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.onlineCustomerServiceCenter.solution.entity.Solution;
 
 import java.util.List;
 

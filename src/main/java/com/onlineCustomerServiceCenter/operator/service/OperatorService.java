@@ -1,9 +1,9 @@
-package com.onlineCustomerServiceCenter.operator;
+package com.onlineCustomerServiceCenter.operator.service;
 
-import com.onlineCustomerServiceCenter.customer.Customer;
 import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.operator.entity.Operator;
 import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
-import com.onlineCustomerServiceCenter.solution.SolutionException;
+import com.onlineCustomerServiceCenter.solution.exceptions.SolutionException;
 
 public interface OperatorService {
 
