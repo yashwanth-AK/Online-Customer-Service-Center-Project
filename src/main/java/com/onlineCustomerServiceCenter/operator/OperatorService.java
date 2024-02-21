@@ -2,6 +2,8 @@ package com.onlineCustomerServiceCenter.operator;
 
 import com.onlineCustomerServiceCenter.customer.Customer;
 import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
+import com.onlineCustomerServiceCenter.solution.SolutionException;
 
 public interface OperatorService {
 
@@ -9,5 +11,5 @@ public interface OperatorService {
 
     String loginOperator(String email, String password);
 
-    Issue addIssueSolution(String issueId, String solutionDescription);
+    Issue addIssueSolution(Integer issueId, String solutionDescription) throws SolutionException, IssueNotFoundException;
 }

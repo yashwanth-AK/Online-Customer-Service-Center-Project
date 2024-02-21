@@ -24,12 +24,12 @@ public class SolutionServiceImpl implements SolutionService{
     }
 
     @Override
-    public Solution acceptSolution(String solutionId) throws SolutionException {
+    public Solution acceptSolution(Integer solutionId) throws SolutionException {
         if (solutionId==null){
             throw new SolutionException("Solution Id cannot be null");
         }
 
-        Optional<Solution> foundSolution= this.solutionRepository.findById(Integer.parseInt(solutionId));
+        Optional<Solution> foundSolution= this.solutionRepository.findById(solutionId);
         if(foundSolution.isPresent()){
             Solution solution=foundSolution.get();
             solution.setSolutionAccepted(true);

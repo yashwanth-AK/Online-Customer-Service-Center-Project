@@ -68,13 +68,13 @@ public class IssueServiceImpl implements IssueService{
     }
 
     @Override
-    public String addSolutionToIssueById(Integer issueId, List<Solution> solution) throws IssueNotFoundException {
+    public String addSolutionToIssueById(Integer issueId, Solution solution) throws IssueNotFoundException {
         Optional<Issue> optionalIssue = this.issueRepository.findById(issueId);
         if(optionalIssue.isEmpty()){
             throw new IssueNotFoundException("No Issue exists with the given Issue Id: "+issueId);
         }
 
-        this.issueRepository.getReferenceById(issueId).setSolutions(solution);
+        this.issueRepository.getReferenceById(issueId).getSolutions().add(solution);
 
         return "Solution Added Successfully";
     }

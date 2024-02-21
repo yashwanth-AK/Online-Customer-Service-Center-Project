@@ -3,7 +3,9 @@ package com.onlineCustomerServiceCenter.operator;
 import com.onlineCustomerServiceCenter.issue.Issue;
 import com.onlineCustomerServiceCenter.issue.IssueRepository;
 import com.onlineCustomerServiceCenter.issue.IssueService;
+import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
 import com.onlineCustomerServiceCenter.solution.Solution;
+import com.onlineCustomerServiceCenter.solution.SolutionException;
 import com.onlineCustomerServiceCenter.solution.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,6 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Autowired
     private OperatorRespository operatorRespository;
-    @Autowired
-    private IssueRepository issueRepository;
     @Autowired
     private SolutionService solutionService;
     @Autowired
@@ -46,14 +46,11 @@ public class OperatorServiceImpl implements OperatorService {
         return this.operatorRespository.save(updatedoperator);
     }
     @Override
-    public Issue addIssueSolution(String issueId, String solutionDescription) {
-      Optional<Issue> issueOptional=  this.issueRepository.findById(Integer.parseInt(issueId));
-      if(issueOptional.isPresent()){
-          Issue issue=issueOptional.get();
+    public Issue addIssueSolution(Integer issueId, String solutionDescription) throws SolutionException, IssueNotFoundException {
+         Issue issue=  this.issueService.getIssueById(issueId);
          Solution solution= solutionService.createSolution(solutionDescription);
-//        issueService.addSolutionToIssue(issueId,solution);
-//        return this.issueService.getIssueById(issueId);
-      }
-        return null;
+        issueService.addSolutionToIssueById(issueId,solution);
+        return this.issueService.getIssueById(issueId);
     }
+
 }
