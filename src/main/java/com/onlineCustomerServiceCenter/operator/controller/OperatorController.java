@@ -1,7 +1,10 @@
-package com.onlineCustomerServiceCenter.operator;
+package com.onlineCustomerServiceCenter.operator.controller;
 
-import com.onlineCustomerServiceCenter.customer.Customer;
 import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.operator.entity.Operator;
+import com.onlineCustomerServiceCenter.operator.dto.OperatorLoginDto;
+import com.onlineCustomerServiceCenter.operator.service.OperatorService;
+import com.onlineCustomerServiceCenter.operator.dto.IssueSolutionDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

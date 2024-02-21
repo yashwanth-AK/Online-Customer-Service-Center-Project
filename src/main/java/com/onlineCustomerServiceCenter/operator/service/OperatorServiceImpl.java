@@ -1,10 +1,13 @@
-package com.onlineCustomerServiceCenter.operator;
+package com.onlineCustomerServiceCenter.operator.service;
 
 import com.onlineCustomerServiceCenter.issue.Issue;
 import com.onlineCustomerServiceCenter.issue.IssueRepository;
 import com.onlineCustomerServiceCenter.issue.IssueService;
-import com.onlineCustomerServiceCenter.solution.Solution;
-import com.onlineCustomerServiceCenter.solution.SolutionService;
+import com.onlineCustomerServiceCenter.operator.dao.OperatorRespository;
+import com.onlineCustomerServiceCenter.operator.dto.OperatorLoginDto;
+import com.onlineCustomerServiceCenter.operator.entity.Operator;
+import com.onlineCustomerServiceCenter.solution.entity.Solution;
+import com.onlineCustomerServiceCenter.solution.service.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
