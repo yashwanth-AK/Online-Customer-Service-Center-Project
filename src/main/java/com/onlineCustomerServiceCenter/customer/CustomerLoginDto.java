@@ -8,13 +8,7 @@ public class CustomerLoginDto {
         super();
     }
 
-    public CustomerLoginDto(String customerEmail, String customerPassword) {
-        super();
-        this.customerEmail = customerEmail;
-        this.customerPassword = customerPassword;
-    }
-
-    public String getUserEmail() {
+    public String getCustomerEmail() {
         return customerEmail;
     }
 
@@ -26,9 +20,21 @@ public class CustomerLoginDto {
         return customerPassword;
     }
 
-    public void setUserPassword(String customerPassword) {
+    public void setCustomerPassword(String customerPassword) {
         this.customerPassword = customerPassword;
     }
+
+    public CustomerLoginDto(String customerEmail, String customerPassword) {
+        super();
+        this.customerEmail = customerEmail;
+        this.customerPassword = customerPassword;
+    }
+
+
+
+
+
+
 }
 
 

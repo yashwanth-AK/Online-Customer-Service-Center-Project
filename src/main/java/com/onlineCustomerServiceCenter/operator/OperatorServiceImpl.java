@@ -23,6 +23,7 @@ public class OperatorServiceImpl implements OperatorService {
     private IssueService issueService;
 
 
+
     @Override
     public String loginOperator(String email, String password) {
 
@@ -50,9 +51,15 @@ public class OperatorServiceImpl implements OperatorService {
       Optional<Issue> issueOptional=  this.issueRepository.findById(Integer.parseInt(issueId));
       if(issueOptional.isPresent()){
           Issue issue=issueOptional.get();
+
+//        Solution solution= solutionService.createSolution(solutionDescription);
+//          this.
+//          issue.getSolutions().add();
+
          Solution solution= solutionService.createSolution(solutionDescription);
 //        issueService.addSolutionToIssue(issueId,solution);
 //        return this.issueService.getIssueById(issueId);
+
       }
         return null;
     }

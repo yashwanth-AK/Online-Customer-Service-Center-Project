@@ -1,5 +1,12 @@
 package com.onlineCustomerServiceCenter.customer;
 
+import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.issue.IssueService;
+import com.onlineCustomerServiceCenter.issue.IssueServiceImpl;
+import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
+import com.onlineCustomerServiceCenter.issue.exception.NullIssueException;
+import com.onlineCustomerServiceCenter.solution.Solution;
+import com.onlineCustomerServiceCenter.solution.SolutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -8,6 +15,12 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private IssueService issueService;
+    @Autowired
+    private SolutionService solutionService;
+
+
 
     @PostMapping("customer/register")
     public Customer registerCustomer(@RequestBody Customer newCustomer) throws CustomerRegisterException{
@@ -21,17 +34,28 @@ public class CustomerController {
     public Customer updateCustomerProfile(@RequestBody Customer customer) throws CustomerUpdateException{
         return this.customerService.updateCustomer(customer);
     }
+
     @GetMapping("customers")
     public List<Customer> getAllCustomers() {
         return this.customerService.getAllCustomers();
     }
+
     @GetMapping("customer/{id}")
-    public Customer getCustomerById(@PathVariable("id") Integer id){
+    public Customer getCustomerById(@PathVariable("id") Integer id) {
         return this.customerService.getCustomerById(id);
     }
+
     @DeleteMapping("customer/{id}")
-    public Customer deleteCustomerById(@PathVariable("id") Integer id) throws CustomerDeleteException{
+    public Customer deleteCustomerById(@PathVariable("id") Integer id) throws CustomerDeleteException {
         return this.customerService.deleteCustomerById(id);
     }
+//   @PatchMapping("customer")
+ //public Customer acceptSolution() {
+    //return this.solutionService.acceptSolution();
+
+   //}
+
+
 
 }
+
