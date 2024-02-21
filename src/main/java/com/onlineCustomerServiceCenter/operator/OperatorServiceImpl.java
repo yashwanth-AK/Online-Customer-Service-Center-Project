@@ -18,6 +18,8 @@ public class OperatorServiceImpl implements OperatorService {
     @Autowired
     private OperatorRespository operatorRespository;
     @Autowired
+    private IssueRepository issueRepository;
+    @Autowired
     private SolutionService solutionService;
     @Autowired
     private IssueService issueService;

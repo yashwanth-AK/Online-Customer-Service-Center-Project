@@ -1,5 +1,7 @@
 package com.onlineCustomerServiceCenter.customer;
 
+import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.issue.IssueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private IssueRepository issueRepository;
     @Override
     public Customer registerCustomer(Customer newCustomer) throws CustomerRegisterException{
         Optional<Customer> accountOpt = this.customerRepository.findByEmail(newCustomer.getEmail());
@@ -41,12 +45,14 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer getCustomerById(Integer customerId){
         return this.customerRepository.findById(customerId).get();
     }
-    public Customer deleteCustomerById(Integer customerId) throws CustomerDeleteException{
+    public Customer deleteCustomerById(Integer customerId) throws CustomerDeleteException {
         Optional<Customer> customerOpt = this.customerRepository.findById(customerId);
-        if(customerOpt.isEmpty())
-            throw new CustomerDeleteException("Customer does not exists for :"+ customerId);
-        this.customerRepository.deleteById(customerId);
-        return customerOpt.get();
+        if (customerOpt.isEmpty()) {
+            throw new CustomerDeleteException("Customer does not exist for ID: " + customerId);
+        } else {
+            Customer customer = customerOpt.get();
+            this.customerRepository.deleteById(customerId);
+            return customer;
+        }
     }
-
 }
