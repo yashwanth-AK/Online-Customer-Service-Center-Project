@@ -27,8 +27,8 @@ public class CustomerController {
     }
 
     @PostMapping("login/customer")
-    public Customer userAccountLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException {
-        return this.customerService.customerLogin(loginDto.getUserEmail(), loginDto.getCustomerPassword());
+    public Customer customerLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException {
+        return this.customerService.customerLogin(loginDto.getCustomerEmail(), loginDto.getCustomerPassword());
     }
 
     @PutMapping("update/customer")
@@ -56,20 +56,7 @@ public class CustomerController {
 
    //}
 
-    @PostMapping("issue/create")
-    public Issue createIssue(@RequestBody Issue newIssue) throws NullIssueException {
-        return this.issueService.addIssue(newIssue);
-    }
 
-    @PutMapping("issue/update")
-    public Issue updateIssue(@RequestBody Issue issue, @PathVariable String newDesc) throws NullIssueException {
-        return this.issueService.updateIssueDescById(issue, newDesc);
-    }
-
-    @DeleteMapping("issue/{id}")
-    public Issue deleteIssue(@PathVariable Integer id) throws IssueNotFoundException {
-        return this.issueService.deleteIssueById(id);
-    }
 
 }
 
