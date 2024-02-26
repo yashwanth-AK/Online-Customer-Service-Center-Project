@@ -2,6 +2,7 @@ package com.onlineCustomerServiceCenter.issue;
 
 import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
 import com.onlineCustomerServiceCenter.issue.exception.NullIssueException;
+import com.onlineCustomerServiceCenter.solution.entity.Solution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,5 +64,17 @@ public class IssueServiceImpl implements IssueService{
 
         //return this.issueRepository.findAllByType(type);
         return null;
+    }
+
+    @Override
+    public String addSolutionToIssueById(Integer issueId, Solution solution) throws IssueNotFoundException {
+        Optional<Issue> optionalIssue = this.issueRepository.findById(issueId);
+        if(optionalIssue.isEmpty()){
+            throw new IssueNotFoundException("No Issue exists with the given Issue Id: "+issueId);
+        }
+
+        this.issueRepository.getReferenceById(issueId).getSolutions().add(solution);
+
+        return "Solution Added Successfully";
     }
 }
