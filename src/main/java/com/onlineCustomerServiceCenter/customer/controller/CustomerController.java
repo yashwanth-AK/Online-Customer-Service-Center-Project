@@ -8,13 +8,13 @@ import com.onlineCustomerServiceCenter.customer.exceptions.CustomerRegisterExcep
 import com.onlineCustomerServiceCenter.customer.exceptions.CustomerUpdateException;
 import com.onlineCustomerServiceCenter.customer.service.CustomerService;
 import com.onlineCustomerServiceCenter.issue.IssueService;
-import com.onlineCustomerServiceCenter.solution.Solution;
-import com.onlineCustomerServiceCenter.solution.SolutionService;
+import com.onlineCustomerServiceCenter.solution.entity.Solution;
+import com.onlineCustomerServiceCenter.solution.exceptions.SolutionException;
+import com.onlineCustomerServiceCenter.solution.service.SolutionService;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 @RestController
 public class CustomerController {
     @Autowired
@@ -55,7 +55,7 @@ public class CustomerController {
         return this.customerService.deleteCustomerById(id);
     }
     @PatchMapping("customer")
-    public Solution acceptSolution(@RequestParam String solutionId) {
+    public Solution acceptSolution(@RequestParam Integer solutionId) throws SolutionException{
          return this.solutionService.acceptSolution(solutionId);
     }
 }
