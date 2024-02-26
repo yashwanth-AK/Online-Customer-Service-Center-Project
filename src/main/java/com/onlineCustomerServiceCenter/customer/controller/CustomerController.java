@@ -1,12 +1,16 @@
-package com.onlineCustomerServiceCenter.customer;
+package com.onlineCustomerServiceCenter.customer.controller;
 
-import com.onlineCustomerServiceCenter.issue.Issue;
+import com.onlineCustomerServiceCenter.customer.dto.CustomerLoginDto;
+import com.onlineCustomerServiceCenter.customer.entity.Customer;
+import com.onlineCustomerServiceCenter.customer.exceptions.CustomerDeleteException;
+import com.onlineCustomerServiceCenter.customer.exceptions.CustomerLoginException;
+import com.onlineCustomerServiceCenter.customer.exceptions.CustomerRegisterException;
+import com.onlineCustomerServiceCenter.customer.exceptions.CustomerUpdateException;
+import com.onlineCustomerServiceCenter.customer.service.CustomerService;
 import com.onlineCustomerServiceCenter.issue.IssueService;
-import com.onlineCustomerServiceCenter.issue.IssueServiceImpl;
-import com.onlineCustomerServiceCenter.issue.exception.IssueNotFoundException;
-import com.onlineCustomerServiceCenter.issue.exception.NullIssueException;
 import com.onlineCustomerServiceCenter.solution.Solution;
 import com.onlineCustomerServiceCenter.solution.SolutionService;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -27,8 +31,8 @@ public class CustomerController {
     }
 
     @PostMapping("login/customer")
-    public Customer customerLogin(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException {
-        return this.customerService.customerLogin(loginDto.getCustomerEmail(), loginDto.getCustomerPassword());
+    public Customer loginCustomer(@RequestBody CustomerLoginDto loginDto) throws CustomerLoginException {
+        return this.customerService.loginCustomer(loginDto.getCustomerEmail(), loginDto.getCustomerPassword());
     }
 
     @PutMapping("update/customer")
@@ -50,13 +54,9 @@ public class CustomerController {
     public Customer deleteCustomerById(@PathVariable("id") Integer id) throws CustomerDeleteException {
         return this.customerService.deleteCustomerById(id);
     }
-//   @PatchMapping("customer")
- //public Customer acceptSolution() {
-    //return this.solutionService.acceptSolution();
-
-   //}
-
-
-
+    @PatchMapping("customer")
+    public Solution acceptSolution(@RequestParam String solutionId) {
+         return this.solutionService.acceptSolution(solutionId);
+    }
 }
 

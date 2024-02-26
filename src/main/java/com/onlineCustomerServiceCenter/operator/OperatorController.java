@@ -1,6 +1,5 @@
 package com.onlineCustomerServiceCenter.operator;
 
-import com.onlineCustomerServiceCenter.customer.Customer;
 import com.onlineCustomerServiceCenter.issue.Issue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
