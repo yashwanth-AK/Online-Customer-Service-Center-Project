@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Operator {
+public class Integer {
     @Id
     @GeneratedValue()
-    private Integer operatorId;
+    private java.lang.Integer operatorId;
 
 
     @NotNull(message = "First Name cannot be null")
@@ -43,7 +43,7 @@ public class Operator {
     @OneToMany
     private List<Issue> customerIssues=new ArrayList<>();
 
-    public Operator(Integer operatorId, String firstName, String lastName, String email, String password, String departmentName, String phoneNumber, String city, List<Issue> customerIssues) {
+    public Integer(java.lang.Integer operatorId, String firstName, String lastName, String email, String password, String departmentName, String phoneNumber, String city, List<Issue> customerIssues) {
         this.operatorId = operatorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -56,15 +56,15 @@ public class Operator {
     }
 
 
-    public Operator() {
+    public Integer() {
 
     }
 
-    public Integer getOperatorId() {
+    public java.lang.Integer getOperatorId() {
         return operatorId;
     }
 
-    public void setOperatorId(Integer operatorId) {
+    public void setOperatorId(java.lang.Integer operatorId) {
         this.operatorId = operatorId;
     }
 
